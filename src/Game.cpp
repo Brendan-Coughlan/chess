@@ -2,16 +2,12 @@
 
 Game::Game()
 {
+	window.create(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Chess");
+	board[1][0] = &pawn; // Place a pawn at position (1, 0)
 }
 
 void Game::run()
 {
-}
-
-void Game::render()
-{
-	window.create(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Chess");
-	
 	while (window.isOpen())
 	{
 		while (const std::optional<sf::Event> event = window.pollEvent())
@@ -19,10 +15,16 @@ void Game::render()
 			if (event->is<sf::Event::Closed>())
 				window.close();
 		}
-		window.clear(BACKGROUND_COLOR);
-		renderBoard();
-		window.display();
+
+		render();
 	}
+}
+
+void Game::render()
+{
+	window.clear(BACKGROUND_COLOR);
+	renderBoard();
+	window.display();
 }
 
 void Game::renderBoard()
@@ -35,11 +37,13 @@ void Game::renderBoard()
 			square.setPosition(sf::Vector2f(file * SQUARE_SIZE, rank * SQUARE_SIZE));
 			square.setFillColor((rank + file) % 2 == 0 ? LIGHT_SQUARE_COLOR : DARK_SQUARE_COLOR);
 
+			window.draw(square);
+
+
 			if (board[rank][file] != nullptr)
 			{
-				//board[rank][file]->render(window);
+				board[rank][file]->render(window);
 			}
-			window.draw(square);
 		}
 	}
 }

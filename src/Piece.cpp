@@ -1,5 +1,6 @@
 #include "Piece.hpp"
 
-Piece::Piece()
+Piece::Piece(Position position)
+    : position(position)
 {
 }
