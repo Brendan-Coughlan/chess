@@ -23,6 +23,10 @@ add_executable(main
     src/Piece.cpp
     src/Pawn.cpp
     src/Rook.cpp
+    src/Knight.cpp
+    src/Bishop.cpp
+    src/Queen.cpp
+    src/King.cpp
 )
 
 target_compile_features(main PRIVATE cxx_std_17)
