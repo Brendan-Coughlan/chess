@@ -1,8 +1,9 @@
 #include "Game.hpp"
+#include "Config.hpp"
 
 Game::Game()
 {
-	window.create(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Chess");
+	window.create(sf::VideoMode({ Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT }), Config::WINDOW_TITLE);
 	board[1][0] = &pawn; // Place a pawn at position (1, 0)
 }
 
@@ -22,20 +23,20 @@ void Game::run()
 
 void Game::render()
 {
-	window.clear(BACKGROUND_COLOR);
+	window.clear(Config::BACKGROUND_COLOR);
 	renderBoard();
 	window.display();
 }
 
 void Game::renderBoard()
 {
-	for (unsigned int rank = 0; rank < BOARD_SIZE; ++rank)
+	for (unsigned int rank = 0; rank < Config::BOARD_SIZE; ++rank)
 	{
-		for (unsigned int file = 0; file < BOARD_SIZE; ++file)
+		for (unsigned int file = 0; file < Config::BOARD_SIZE; ++file)
 		{
-			sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE, SQUARE_SIZE));
-			square.setPosition(sf::Vector2f(file * SQUARE_SIZE, rank * SQUARE_SIZE));
-			square.setFillColor((rank + file) % 2 == 0 ? LIGHT_SQUARE_COLOR : DARK_SQUARE_COLOR);
+			sf::RectangleShape square(sf::Vector2f(Config::SQUARE_SIZE, Config::SQUARE_SIZE));
+			square.setPosition(sf::Vector2f(file * Config::SQUARE_SIZE, rank * Config::SQUARE_SIZE));
+			square.setFillColor((rank + file) % 2 == 0 ? Config::LIGHT_SQUARE_COLOR : Config::DARK_SQUARE_COLOR);
 
 			window.draw(square);
 
