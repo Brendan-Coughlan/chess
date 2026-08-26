@@ -1,4 +1,5 @@
 #include "Pawn.hpp"
+#include "Config.hpp"
 
 Pawn::Pawn(Position position)
     : Piece(position)
@@ -12,7 +13,7 @@ void Pawn::move()
 
 void Pawn::render(sf::RenderWindow& window)
 {
-	sf::CircleShape pawn = sf::CircleShape(20);
-	pawn.setPosition(sf::Vector2f(getPosition().rank , getPosition().file));
+	sf::CircleShape pawn = sf::CircleShape(Config::PIECE_SIZE / 2);
+	pawn.setPosition({getPosition().rank * Config::SQUARE_SIZE + Config::PIECE_OFFSET, getPosition().file * Config::SQUARE_SIZE + Config::PIECE_OFFSET});
 	window.draw(pawn);
 }
