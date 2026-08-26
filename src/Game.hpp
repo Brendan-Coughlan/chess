@@ -3,19 +3,19 @@
 #include <SFML/Graphics.hpp>
 #include "Piece.hpp"
 #include "Pawn.hpp"
+#include "Board.hpp"
 #include "Config.hpp"
 
 class Game
 {
 public:
     Game();
+	void init();
     void run();
 	void render();
 private:
-	Pawn pawn = Pawn({1, 0});
-
 	sf::RenderWindow window;
-	Piece* board[Config::BOARD_SIZE][Config::BOARD_SIZE]{};
+	Board board;
 
-	void renderBoard();
+	void drawChessboard();
 };

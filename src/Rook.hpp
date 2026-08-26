@@ -2,11 +2,11 @@
 
 #include "Piece.hpp"
 
-class Pawn : public Piece
+class Rook : public Piece
 {
 public:
-	Pawn(bool isWhite, Position position);
+	Rook(bool isWhite, Position position);
 	bool isValidMove(Position target) const override;
-    void move() override;
+	void move() override;
 	void render(sf::RenderWindow& window) override;
 };
