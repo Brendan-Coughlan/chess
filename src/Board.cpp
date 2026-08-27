@@ -2,7 +2,6 @@
 
 Board::Board()
 {
-	Piece* piece = new Rook(Color::White, { 6, 0 });
     for (int i = 0; i < Config::BOARD_SIZE; ++i)
     {
         for (int j = 0; j < Config::BOARD_SIZE; ++j)
@@ -10,7 +9,21 @@ Board::Board()
             squares[i][j] = nullptr;
         }
     }
-	squares[6][0] = piece;
+
+    Position position{ 6, 0 }; // g1
+
+    squares[position.rank][position.file] =
+        new Rook(Color::White, position);
+}
+
+void Board::createPiece(Piece* piece, Position position)
+{
+	if (squares[position.rank][position.file] != nullptr)
+	{
+		delete squares[position.rank][position.file];
+	}
+
+	squares[position.rank][position.file] = piece;
 }
 
 Piece* Board::getPiece(Position position) const
@@ -51,13 +64,13 @@ bool Board::movePiece(Position from, Position to)
 
 void Board::drawPieces(sf::RenderWindow& window)
 {
-    for (int file = 0; file < Config::BOARD_SIZE; ++file)
+    for (int rank = 0; rank < Config::BOARD_SIZE; ++rank)
     {
-        for (int rank = 0; rank < Config::BOARD_SIZE; ++rank)
+        for (int file = 0; file < Config::BOARD_SIZE; ++file)
         {
-            if (squares[file][rank])
+            if (squares[rank][file])
             {
-                squares[file][rank]->render(window);
+                squares[rank][file]->render(window);
             }
         }
     }

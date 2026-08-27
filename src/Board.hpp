@@ -10,6 +10,8 @@ class Board
 public:
 	Board();
 
+	void createPiece(Piece* piece, Position position);
+
 	Piece* getPiece(Position position) const;
 	
 	bool isValidMove(Position from, Position to) const;

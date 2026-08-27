@@ -84,15 +84,22 @@ void Game::handleEvents()
 void Game::handleMouseClick(sf::Vector2i mousePosition)
 {
 	int file = mousePosition.x / Config::SQUARE_SIZE;
-	int rank = Config::BOARD_SIZE - (mousePosition.y / Config::SQUARE_SIZE);
-	if (file >= 0 && file < Config::BOARD_SIZE && rank >= 0 && rank < Config::BOARD_SIZE)
+	int rank = mousePosition.y / Config::SQUARE_SIZE;
+
+	if (file >= 0 && file < Config::BOARD_SIZE &&
+		rank >= 0 && rank < Config::BOARD_SIZE)
 	{
-		Position clickedPosition({file, rank});
+		Position clickedPosition{ file, rank };
 
-		char file = 'a' + clickedPosition.file;
-		int rank = clickedPosition.rank + 1;
+		std::cout
+			<< "file: " << clickedPosition.file
+			<< ", rank: " << clickedPosition.rank
+			<< '\n';
 
-		std::cout << file << rank << '\n';
+		chessGame.getBoard().createPiece(
+			new Pawn(Color::White, clickedPosition),
+			clickedPosition
+		);
 	}
 }
 

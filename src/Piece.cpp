@@ -30,8 +30,8 @@ void Piece::drawSprite(
     sf::Sprite sprite(texture);
 
     sprite.setPosition({
-        position.rank * Config::SQUARE_SIZE + Config::PIECE_OFFSET,
-        position.file * Config::SQUARE_SIZE + Config::PIECE_OFFSET
+        position.file * Config::SQUARE_SIZE + Config::PIECE_OFFSET,
+        position.rank * Config::SQUARE_SIZE + Config::PIECE_OFFSET
         });
 
     const sf::Vector2u textureSize = texture.getSize();
