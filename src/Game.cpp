@@ -70,16 +70,37 @@ void Game::init()
 	}
 }
 
+void Game::handleEvents()
+{
+	while (const std::optional<sf::Event> event = window.pollEvent())
+	{
+		if (event->is<sf::Event::Closed>())
+			window.close();
+		else if (event->is<sf::Event::MouseButtonPressed>())
+			handleMouseClick(sf::Mouse::getPosition(window));
+	}
+}
+
+void Game::handleMouseClick(sf::Vector2i mousePosition)
+{
+	int file = mousePosition.x / Config::SQUARE_SIZE;
+	int rank = Config::BOARD_SIZE - (mousePosition.y / Config::SQUARE_SIZE);
+	if (file >= 0 && file < Config::BOARD_SIZE && rank >= 0 && rank < Config::BOARD_SIZE)
+	{
+		Position clickedPosition({file, rank});
+
+		char file = 'a' + clickedPosition.file;
+		int rank = clickedPosition.rank + 1;
+
+		std::cout << file << rank << '\n';
+	}
+}
+
 void Game::run()
 {
 	while (window.isOpen())
 	{
-		while (const std::optional<sf::Event> event = window.pollEvent())
-		{
-			if (event->is<sf::Event::Closed>())
-				window.close();
-		}
-
+		handleEvents();
 		render();
 	}
 }
@@ -88,7 +109,7 @@ void Game::render()
 {
 	window.clear(Config::BACKGROUND_COLOR);
 	drawChessboard();
-	board.render(window);
+	chessGame.getBoard().drawPieces(window);
 	window.display();
 }
 

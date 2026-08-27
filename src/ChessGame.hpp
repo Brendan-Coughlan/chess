@@ -10,9 +10,14 @@ class ChessGame
 public:
     ChessGame();
 
+	void init();
+
     bool makeMove(Position from, Position to);
 
+    Board& getBoard();
     const Board& getBoard() const;
+
+    Color getCurrentTurn() const;
 
 private:
     Board board;

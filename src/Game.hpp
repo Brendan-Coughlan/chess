@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "ChessGame.hpp"
 #include "Piece.hpp"
 #include "Pawn.hpp"
 #include "Board.hpp"
@@ -12,10 +13,14 @@ public:
     Game();
 	void init();
     void run();
-	void render();
+	void handleClick(sf::Vector2i mousePosition);
 private:
-	sf::RenderWindow window;
-	Board board;
+	void handleEvents();
+	void handleMouseClick(sf::Vector2i mousePosition);
 
+	void render();
 	void drawChessboard();
+
+	sf::RenderWindow window;
+	ChessGame chessGame;
 };

@@ -18,6 +18,22 @@ Piece* Board::getPiece(Position position) const
     return squares[position.rank][position.file];
 }
 
+bool Board::isValidMove(Position from, Position to) const
+{
+    Piece* piece = getPiece(from);
+    if (!piece)
+    {
+        return false;
+    }
+
+	if (!piece->isValidMove(to))
+	{
+		return false;
+	}
+
+    return true;
+}
+
 bool Board::movePiece(Position from, Position to)
 {
     Piece* piece = getPiece(from);
@@ -33,15 +49,15 @@ bool Board::movePiece(Position from, Position to)
     return true;
 }
 
-void Board::render(sf::RenderWindow& window)
+void Board::drawPieces(sf::RenderWindow& window)
 {
-    for (int i = 0; i < Config::BOARD_SIZE; ++i)
+    for (int file = 0; file < Config::BOARD_SIZE; ++file)
     {
-        for (int j = 0; j < Config::BOARD_SIZE; ++j)
+        for (int rank = 0; rank < Config::BOARD_SIZE; ++rank)
         {
-            if (squares[i][j])
+            if (squares[file][rank])
             {
-                squares[i][j]->render(window);
+                squares[file][rank]->render(window);
             }
         }
     }

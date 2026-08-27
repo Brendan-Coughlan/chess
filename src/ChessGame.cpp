@@ -7,9 +7,24 @@ ChessGame::ChessGame()
 {
 }
 
+void ChessGame::init()
+{
+    // Set up the initial chess position here.
+}
+
+Board& ChessGame::getBoard()
+{
+    return board;
+}
+
 const Board& ChessGame::getBoard() const
 {
-	return board;
+    return board;
+}
+
+Color ChessGame::getCurrentTurn() const
+{
+	return currentTurn;
 }
 
 bool ChessGame::makeMove(Position from, Position to)

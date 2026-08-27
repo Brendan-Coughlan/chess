@@ -11,10 +11,12 @@ public:
 	Board();
 
 	Piece* getPiece(Position position) const;
+	
+	bool isValidMove(Position from, Position to) const;
 
 	bool movePiece(Position from, Position to);
 
-	void render(sf::RenderWindow& window);
+	void drawPieces(sf::RenderWindow& window);
 
 private:
 	Piece* squares[Config::BOARD_SIZE][Config::BOARD_SIZE];
