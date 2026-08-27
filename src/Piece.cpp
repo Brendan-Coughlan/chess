@@ -3,14 +3,14 @@
 #include "Piece.hpp"
 #include "Config.hpp"
 
-Piece::Piece(bool isWhite, Position position)
-    : isWhite(isWhite), position(position)
+Piece::Piece(Color color, Position position)
+    : color(color), position(position)
 {
 }
 
-bool Piece::getIsWhite() const
+Color Piece::getColor() const
 {
-	return isWhite;
+	return color;
 }
 
 Position Piece::getPosition() const

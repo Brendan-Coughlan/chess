@@ -2,7 +2,7 @@
 
 Board::Board()
 {
-	Piece* piece = new Rook(true, { 6, 0 });
+	Piece* piece = new Rook(Color::White, { 6, 0 });
     for (int i = 0; i < Config::BOARD_SIZE; ++i)
     {
         for (int j = 0; j < Config::BOARD_SIZE; ++j)

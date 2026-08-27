@@ -19,6 +19,8 @@ FetchContent_MakeAvailable(SFML)
 add_executable(main
     src/main.cpp
     src/Game.cpp
+    src/ChessGame.cpp
+    src/Player.cpp
     src/Board.cpp
     src/Piece.cpp
     src/Pawn.cpp

@@ -1,8 +1,8 @@
 #include "Knight.hpp"
 #include "Config.hpp"
 
-Knight::Knight(bool isWhite, Position position)
-	: Piece(isWhite, position)
+Knight::Knight(Color color, Position position)
+	: Piece(color, position)
 {
 }
 
@@ -25,7 +25,7 @@ void Knight::move()
 void Knight::render(sf::RenderWindow& window)
 {
 	const sf::Texture& texture =
-		isWhite ? Config::WHITE_KNIGHT_TEXTURE
+		getColor() == Color::White ? Config::WHITE_KNIGHT_TEXTURE
 		: Config::BLACK_KNIGHT_TEXTURE;
 
 	drawSprite(window, texture);

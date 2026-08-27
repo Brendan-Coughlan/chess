@@ -1,8 +1,8 @@
 #include "Bishop.hpp"
 #include "Config.hpp"
 
-Bishop::Bishop(bool isWhite, Position position)
-	: Piece(isWhite, position)
+Bishop::Bishop(Color color, Position position)
+	: Piece(color, position)
 {
 }
 
@@ -22,7 +22,7 @@ void Bishop::move()
 void Bishop::render(sf::RenderWindow& window)
 {
 	const sf::Texture& texture =
-		isWhite ? Config::WHITE_BISHOP_TEXTURE
+		getColor() == Color::White ? Config::WHITE_BISHOP_TEXTURE
 		: Config::BLACK_BISHOP_TEXTURE;
 
 	drawSprite(window, texture);

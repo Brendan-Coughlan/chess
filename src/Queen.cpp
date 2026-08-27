@@ -1,8 +1,8 @@
 #include "Queen.hpp"
 #include "Config.hpp"
 
-Queen::Queen(bool isWhite, Position position)
-	: Piece(isWhite, position)
+Queen::Queen(Color color, Position position)
+	: Piece(color, position)
 {
 }
 
@@ -22,7 +22,7 @@ void Queen::move()
 void Queen::render(sf::RenderWindow& window)
 {
 	const sf::Texture& texture =
-		isWhite ? Config::WHITE_QUEEN_TEXTURE
+		getColor() == Color::White ? Config::WHITE_QUEEN_TEXTURE
 		: Config::BLACK_QUEEN_TEXTURE;
 
 	drawSprite(window, texture);

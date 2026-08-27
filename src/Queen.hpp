@@ -5,7 +5,7 @@
 class Queen : public Piece
 {
 public:
-	Queen(bool isWhite, Position position);
+	Queen(Color color, Position position);
 	bool isValidMove(Position target) const override;
 	void move() override;
 	void render(sf::RenderWindow& window) override;

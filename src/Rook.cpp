@@ -1,8 +1,8 @@
 #include "Rook.hpp"
 #include "Config.hpp"
 
-Rook::Rook(bool isWhite, Position position)
-	: Piece(isWhite, position)
+Rook::Rook(Color color, Position position)
+	: Piece(color, position)
 {
 }
 
@@ -24,7 +24,7 @@ void Rook::move()
 void Rook::render(sf::RenderWindow& window)
 {
 	const sf::Texture& texture =
-		isWhite ? Config::WHITE_ROOK_TEXTURE
+		getColor() == Color::White ? Config::WHITE_ROOK_TEXTURE
 		: Config::BLACK_ROOK_TEXTURE;
 
 	drawSprite(window, texture);

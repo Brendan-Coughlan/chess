@@ -2,22 +2,23 @@
 
 #include <SFML/Graphics.hpp>
 #include "Position.hpp"
+#include "Color.hpp"
 
 class Piece
 {
 public:
-	Piece(bool isWhite, Position position);
+	Piece(Color color, Position position);
 
 	virtual bool isValidMove(Position target) const = 0;
     virtual void move() = 0;
 	virtual void render(sf::RenderWindow& window) = 0;
 
-	bool getIsWhite() const;
+	Color getColor() const;
 	Position getPosition() const;
 
 	void setPosition(Position position);
 protected:
-	bool isWhite;
+	Color color;
 	Position position;
 
 	void drawSprite(

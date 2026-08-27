@@ -1,8 +1,8 @@
 #include "King.hpp"
 #include "Config.hpp"
 
-King::King(bool isWhite, Position position)
-	: Piece(isWhite, position)
+King::King(Color color, Position position)
+	: Piece(color, position)
 {
 }
 
@@ -22,7 +22,7 @@ void King::move()
 void King::render(sf::RenderWindow& window)
 {
 	const sf::Texture& texture =
-		isWhite ? Config::WHITE_KING_TEXTURE
+		getColor() == Color::White ? Config::WHITE_KING_TEXTURE
 		: Config::BLACK_KING_TEXTURE;
 
 	drawSprite(window, texture);
